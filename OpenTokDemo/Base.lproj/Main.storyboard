@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqL-b3-UUY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usX-vz-DiQ">
+                                <rect key="frame" x="485" y="485" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="00Y-Me-1yP"/>
+                                    <constraint firstAttribute="width" secondItem="usX-vz-DiQ" secondAttribute="height" multiplier="1:1" id="6SW-l1-i7B"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry2-Vu-S4t">
+                                <rect key="frame" x="10" y="30" width="105" height="30"/>
+                                <state key="normal" title="Switch Camera">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSwitchCameraPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GZU-ww-AQ6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiL-Zx-Ti6">
+                                <rect key="frame" x="460" y="30" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yx8-qL-LML"/>
+                                    <constraint firstAttribute="width" constant="43" id="c15-Hz-JqS"/>
+                                    <constraint firstAttribute="height" constant="30" id="vd1-0B-v03"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="zdL-Xq-oiH"/>
+                                </constraints>
+                                <state key="normal" title="CAMERA ON/ OFF">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="c15-Hz-JqS"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onBtnMutePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dHe-oS-X1B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="xqL-b3-UUY" secondAttribute="bottom" id="2mk-mJ-JH6"/>
+                            <constraint firstItem="wiL-Zx-Ti6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="9ga-Yk-AUs"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="usX-vz-DiQ" secondAttribute="bottom" constant="15" id="KxG-qZ-P2V"/>
+                            <constraint firstAttribute="trailing" secondItem="wiL-Zx-Ti6" secondAttribute="trailing" constant="10" id="Lsn-Th-xBe"/>
+                            <constraint firstAttribute="trailing" secondItem="usX-vz-DiQ" secondAttribute="trailing" constant="15" id="LtH-3X-Uka"/>
+                            <constraint firstItem="ry2-Vu-S4t" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="MFO-aE-no3"/>
+                            <constraint firstItem="ry2-Vu-S4t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="PZK-F9-Ohb"/>
+                            <constraint firstItem="xqL-b3-UUY" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="R2c-5K-8e6"/>
+                            <constraint firstItem="xqL-b3-UUY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WkD-dE-fCy"/>
+                            <constraint firstAttribute="trailing" secondItem="xqL-b3-UUY" secondAttribute="trailing" id="yGs-Kj-7Yf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="counterPartView" destination="xqL-b3-UUY" id="yXD-0a-fzp"/>
+                        <outlet property="myCameraView" destination="usX-vz-DiQ" id="4sO-78-LtI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
