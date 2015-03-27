@@ -30,47 +30,70 @@
                                     <constraint firstAttribute="width" secondItem="usX-vz-DiQ" secondAttribute="height" multiplier="1:1" id="6SW-l1-i7B"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry2-Vu-S4t">
-                                <rect key="frame" x="10" y="30" width="105" height="30"/>
-                                <state key="normal" title="Switch Camera">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSwitchCameraPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GZU-ww-AQ6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiL-Zx-Ti6">
-                                <rect key="frame" x="460" y="30" width="130" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnp-2f-N8y" userLabel="overlayView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry2-Vu-S4t">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                        <state key="normal" title="Switch Camera">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSwitchCameraPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GZU-ww-AQ6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qiv-E6-IsK">
+                                        <rect key="frame" x="0.0" y="30" width="65" height="30"/>
+                                        <state key="normal" title="Mute Mic">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBtnMutePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kpa-fd-0dV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiL-Zx-Ti6">
+                                        <rect key="frame" x="0.0" y="60" width="130" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yx8-qL-LML"/>
+                                            <constraint firstAttribute="width" constant="43" id="c15-Hz-JqS"/>
+                                            <constraint firstAttribute="height" constant="30" id="vd1-0B-v03"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="zdL-Xq-oiH"/>
+                                        </constraints>
+                                        <state key="normal" title="CAMERA ON/ OFF">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="c15-Hz-JqS"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onBtnCameraOnOffPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cBO-Eg-K01"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yx8-qL-LML"/>
-                                    <constraint firstAttribute="width" constant="43" id="c15-Hz-JqS"/>
-                                    <constraint firstAttribute="height" constant="30" id="vd1-0B-v03"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="zdL-Xq-oiH"/>
+                                    <constraint firstItem="wiL-Zx-Ti6" firstAttribute="top" secondItem="Qiv-E6-IsK" secondAttribute="bottom" id="4vn-gt-Osb"/>
+                                    <constraint firstItem="Qiv-E6-IsK" firstAttribute="top" secondItem="ry2-Vu-S4t" secondAttribute="bottom" id="SdZ-GV-3Sa"/>
+                                    <constraint firstItem="ry2-Vu-S4t" firstAttribute="centerX" secondItem="Qiv-E6-IsK" secondAttribute="centerX" constant="20" id="l4I-rl-mfF"/>
+                                    <constraint firstItem="wiL-Zx-Ti6" firstAttribute="centerX" secondItem="Qiv-E6-IsK" secondAttribute="centerX" constant="32.5" id="oMd-lG-ty3"/>
                                 </constraints>
-                                <state key="normal" title="CAMERA ON/ OFF">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="c15-Hz-JqS"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="onBtnMutePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dHe-oS-X1B"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="xqL-b3-UUY" secondAttribute="bottom" id="2mk-mJ-JH6"/>
-                            <constraint firstItem="wiL-Zx-Ti6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="9ga-Yk-AUs"/>
+                            <constraint firstItem="pnp-2f-N8y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="6Ac-eZ-dez"/>
+                            <constraint firstAttribute="trailing" secondItem="pnp-2f-N8y" secondAttribute="trailing" id="74y-8S-ffk"/>
+                            <constraint firstItem="xqL-b3-UUY" firstAttribute="leading" secondItem="ry2-Vu-S4t" secondAttribute="trailing" constant="-105" id="BOA-a8-RA5"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pnp-2f-N8y" secondAttribute="bottom" id="EOQ-Iu-62i"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="usX-vz-DiQ" secondAttribute="bottom" constant="15" id="KxG-qZ-P2V"/>
-                            <constraint firstAttribute="trailing" secondItem="wiL-Zx-Ti6" secondAttribute="trailing" constant="10" id="Lsn-Th-xBe"/>
                             <constraint firstAttribute="trailing" secondItem="usX-vz-DiQ" secondAttribute="trailing" constant="15" id="LtH-3X-Uka"/>
-                            <constraint firstItem="ry2-Vu-S4t" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="MFO-aE-no3"/>
-                            <constraint firstItem="ry2-Vu-S4t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="PZK-F9-Ohb"/>
                             <constraint firstItem="xqL-b3-UUY" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="R2c-5K-8e6"/>
                             <constraint firstItem="xqL-b3-UUY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WkD-dE-fCy"/>
+                            <constraint firstItem="pnp-2f-N8y" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="gyi-zU-eLN"/>
+                            <constraint firstItem="xqL-b3-UUY" firstAttribute="top" secondItem="ry2-Vu-S4t" secondAttribute="bottom" constant="-50" id="mdt-W4-nG1"/>
                             <constraint firstAttribute="trailing" secondItem="xqL-b3-UUY" secondAttribute="trailing" id="yGs-Kj-7Yf"/>
                         </constraints>
                     </view>

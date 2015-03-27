@@ -15,9 +15,14 @@
     OTPublisher* _publisher;
     OTSubscriber* _subscriber;
 }
+
 - (IBAction)onBtnMutePressed:(id)sender {
-    
-    _publisher.publishVideo = !_publisher.publishVideo;
+   
+     _publisher.publishAudio = !_publisher.publishAudio;
+
+}
+- (IBAction)onBtnCameraOnOffPressed:(id)sender {
+    _publisher.publishVideo = !_publisher.publishVideo;   
 }
 - (IBAction)onSwitchCameraPressed:(id)sender {
     _publisher.cameraPosition = _publisher.cameraPosition == AVCaptureDevicePositionFront ? AVCaptureDevicePositionBack : AVCaptureDevicePositionFront;
