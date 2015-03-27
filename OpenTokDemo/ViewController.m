@@ -22,11 +22,31 @@
 
 }
 - (IBAction)onBtnCameraOnOffPressed:(id)sender {
-    _publisher.publishVideo = !_publisher.publishVideo;   
+    _publisher.publishVideo = !_publisher.publishVideo;
 }
 - (IBAction)onSwitchCameraPressed:(id)sender {
     _publisher.cameraPosition = _publisher.cameraPosition == AVCaptureDevicePositionFront ? AVCaptureDevicePositionBack : AVCaptureDevicePositionFront;
 }
+- (IBAction)onBtnHangUpPressed:(id)sender {
+    
+
+
+    OTError * error = nil;
+    if (_publisher.session){
+            [_session unpublish:_publisher error:&error];
+    }
+    else{
+
+        [self doPublish];
+//        [_session publish:_publisher error:&error];
+        
+    }
+
+    
+    NSLog(@"Error %@",error);
+    
+}
+
 
 // *** Fill the following variables using your own Project info  ***
 // ***          https://dashboard.tokbox.com/projects            ***

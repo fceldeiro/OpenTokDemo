@@ -71,11 +71,22 @@
                                             <action selector="onBtnCameraOnOffPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cBO-Eg-K01"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RJ-EY-BH5">
+                                        <rect key="frame" x="18" y="90" width="94" height="30"/>
+                                        <state key="normal" title="Hangup / Call">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBtnHangUpPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eYf-c8-zUP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="2RJ-EY-BH5" firstAttribute="top" secondItem="wiL-Zx-Ti6" secondAttribute="bottom" id="1Xr-3C-C9v"/>
                                     <constraint firstItem="wiL-Zx-Ti6" firstAttribute="top" secondItem="Qiv-E6-IsK" secondAttribute="bottom" id="4vn-gt-Osb"/>
                                     <constraint firstItem="Qiv-E6-IsK" firstAttribute="top" secondItem="ry2-Vu-S4t" secondAttribute="bottom" id="SdZ-GV-3Sa"/>
+                                    <constraint firstItem="wiL-Zx-Ti6" firstAttribute="centerX" secondItem="2RJ-EY-BH5" secondAttribute="centerX" id="ZN1-xQ-GAe"/>
                                     <constraint firstItem="ry2-Vu-S4t" firstAttribute="centerX" secondItem="Qiv-E6-IsK" secondAttribute="centerX" constant="20" id="l4I-rl-mfF"/>
                                     <constraint firstItem="wiL-Zx-Ti6" firstAttribute="centerX" secondItem="Qiv-E6-IsK" secondAttribute="centerX" constant="32.5" id="oMd-lG-ty3"/>
                                 </constraints>
