@@ -15,6 +15,7 @@
 		CD7C05181AC45742004D4858 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7C05171AC45742004D4858 /* Images.xcassets */; };
 		CD7C051B1AC45742004D4858 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD7C05191AC45742004D4858 /* LaunchScreen.xib */; };
 		CD7C05271AC45742004D4858 /* OpenTokDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C05261AC45742004D4858 /* OpenTokDemoTests.m */; };
+		CD7C05CC1AC5EE07004D4858 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C05CB1AC5EE07004D4858 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		CD7C05201AC45742004D4858 /* OpenTokDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenTokDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7C05251AC45742004D4858 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD7C05261AC45742004D4858 /* OpenTokDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenTokDemoTests.m; sourceTree = "<group>"; };
+		CD7C05CA1AC5EE07004D4858 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CD7C05CB1AC5EE07004D4858 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				CD7C05171AC45742004D4858 /* Images.xcassets */,
 				CD7C05191AC45742004D4858 /* LaunchScreen.xib */,
 				CD7C050A1AC45742004D4858 /* Supporting Files */,
+				CD7C05CA1AC5EE07004D4858 /* MainViewController.h */,
+				CD7C05CB1AC5EE07004D4858 /* MainViewController.m */,
 			);
 			path = OpenTokDemo;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				CD7C05131AC45742004D4858 /* ViewController.m in Sources */,
 				CD7C05101AC45742004D4858 /* AppDelegate.m in Sources */,
 				CD7C050D1AC45742004D4858 /* main.m in Sources */,
+				CD7C05CC1AC5EE07004D4858 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

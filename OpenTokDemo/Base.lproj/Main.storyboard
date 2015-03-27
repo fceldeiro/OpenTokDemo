@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OuZ-Zw-fg7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="07g-Fa-XK8">
+            <objects>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" id="OuZ-Zw-fg7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xXE-Do-p1q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wWW-Xx-5z4" kind="relationship" relationship="rootViewController" id="YEf-KY-RUp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNG-ac-8cz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1250" y="10"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="wIZ-kp-drq">
+            <objects>
+                <viewController id="wWW-Xx-5z4" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Qx-fN-Jy8"/>
+                        <viewControllerLayoutGuide type="bottom" id="fpa-X2-TsN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jwf-eK-ewk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJf-MZ-zRP">
+                                <rect key="frame" x="229" y="253" width="142" height="30"/>
+                                <state key="normal" title="Connect with: UserA">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="segueCreateSessionForUserA" id="71V-Ja-p0u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVD-P4-Tnx">
+                                <rect key="frame" x="229" y="285" width="142" height="30"/>
+                                <state key="normal" title="Connect with: UserB">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="segueCreateSessionForUserB" id="Pee-R8-Qpo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08V-vn-Eu3">
+                                <rect key="frame" x="229" y="317" width="143" height="30"/>
+                                <state key="normal" title="Connect with: UserC">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="segueCreateSessionForUserC" id="4IQ-lt-YaI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YVD-P4-Tnx" firstAttribute="centerX" secondItem="SJf-MZ-zRP" secondAttribute="centerX" id="A47-bY-Oho"/>
+                            <constraint firstItem="08V-vn-Eu3" firstAttribute="top" secondItem="YVD-P4-Tnx" secondAttribute="bottom" constant="2" id="Ta7-rd-uVX"/>
+                            <constraint firstItem="YVD-P4-Tnx" firstAttribute="top" secondItem="SJf-MZ-zRP" secondAttribute="bottom" constant="2" id="khB-Pe-qFq"/>
+                            <constraint firstAttribute="centerY" secondItem="YVD-P4-Tnx" secondAttribute="centerY" id="n92-Fd-KpM"/>
+                            <constraint firstAttribute="centerX" secondItem="YVD-P4-Tnx" secondAttribute="centerX" id="pES-Cq-kc1"/>
+                            <constraint firstItem="08V-vn-Eu3" firstAttribute="centerX" secondItem="YVD-P4-Tnx" secondAttribute="centerX" constant="0.5" id="xst-Ev-WaU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="MFE-KP-Zjj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8tJ-4t-rgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570" y="10"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -15,15 +87,15 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqL-b3-UUY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usX-vz-DiQ">
-                                <rect key="frame" x="485" y="485" width="100" height="100"/>
+                                <rect key="frame" x="485" y="421" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="00Y-Me-1yP"/>
@@ -31,64 +103,44 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnp-2f-N8y" userLabel="overlayView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry2-Vu-S4t">
-                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nb-qr-sGa">
+                                        <rect key="frame" x="8" y="8" width="105" height="30"/>
                                         <state key="normal" title="Switch Camera">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onSwitchCameraPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GZU-ww-AQ6"/>
+                                            <action selector="onSwitchCameraPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ggt-p3-ckT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qiv-E6-IsK">
-                                        <rect key="frame" x="0.0" y="30" width="65" height="30"/>
-                                        <state key="normal" title="Mute Mic">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27v-CL-ujM">
+                                        <rect key="frame" x="13" y="38" width="95" height="30"/>
+                                        <state key="normal" title="Mute / Umute">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onBtnMutePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kpa-fd-0dV"/>
+                                            <action selector="onBtnMutePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="I4d-CJ-WXi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiL-Zx-Ti6">
-                                        <rect key="frame" x="0.0" y="60" width="130" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yx8-qL-LML"/>
-                                            <constraint firstAttribute="width" constant="43" id="c15-Hz-JqS"/>
-                                            <constraint firstAttribute="height" constant="30" id="vd1-0B-v03"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="zdL-Xq-oiH"/>
-                                        </constraints>
-                                        <state key="normal" title="CAMERA ON/ OFF">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="c15-Hz-JqS"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="onBtnCameraOnOffPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cBO-Eg-K01"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RJ-EY-BH5">
-                                        <rect key="frame" x="18" y="90" width="94" height="30"/>
-                                        <state key="normal" title="Hangup / Call">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDO-iq-Agj">
+                                        <rect key="frame" x="9" y="68" width="104" height="30"/>
+                                        <state key="normal" title="Camera On/Off">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onBtnHangUpPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eYf-c8-zUP"/>
+                                            <action selector="onBtnCameraOnOffPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Csw-2u-1WX"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="2RJ-EY-BH5" firstAttribute="top" secondItem="wiL-Zx-Ti6" secondAttribute="bottom" id="1Xr-3C-C9v"/>
-                                    <constraint firstItem="wiL-Zx-Ti6" firstAttribute="top" secondItem="Qiv-E6-IsK" secondAttribute="bottom" id="4vn-gt-Osb"/>
-                                    <constraint firstItem="Qiv-E6-IsK" firstAttribute="top" secondItem="ry2-Vu-S4t" secondAttribute="bottom" id="SdZ-GV-3Sa"/>
-                                    <constraint firstItem="wiL-Zx-Ti6" firstAttribute="centerX" secondItem="2RJ-EY-BH5" secondAttribute="centerX" id="ZN1-xQ-GAe"/>
-                                    <constraint firstItem="ry2-Vu-S4t" firstAttribute="centerX" secondItem="Qiv-E6-IsK" secondAttribute="centerX" constant="20" id="l4I-rl-mfF"/>
-                                    <constraint firstItem="wiL-Zx-Ti6" firstAttribute="centerX" secondItem="Qiv-E6-IsK" secondAttribute="centerX" constant="32.5" id="oMd-lG-ty3"/>
+                                    <constraint firstItem="8Nb-qr-sGa" firstAttribute="top" secondItem="pnp-2f-N8y" secondAttribute="top" constant="8" id="AIA-v9-3u9"/>
+                                    <constraint firstItem="pDO-iq-Agj" firstAttribute="centerX" secondItem="27v-CL-ujM" secondAttribute="centerX" id="cdK-Lb-mB5"/>
+                                    <constraint firstItem="pDO-iq-Agj" firstAttribute="top" secondItem="27v-CL-ujM" secondAttribute="bottom" id="hME-gf-5IG"/>
+                                    <constraint firstItem="27v-CL-ujM" firstAttribute="top" secondItem="8Nb-qr-sGa" secondAttribute="bottom" id="n3y-Hx-iTj"/>
+                                    <constraint firstItem="8Nb-qr-sGa" firstAttribute="centerX" secondItem="27v-CL-ujM" secondAttribute="centerX" id="qeE-vJ-Ip3"/>
+                                    <constraint firstItem="8Nb-qr-sGa" firstAttribute="leading" secondItem="pnp-2f-N8y" secondAttribute="leading" constant="8" id="re8-xL-4a4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -97,17 +149,16 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="xqL-b3-UUY" secondAttribute="bottom" id="2mk-mJ-JH6"/>
                             <constraint firstItem="pnp-2f-N8y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="6Ac-eZ-dez"/>
                             <constraint firstAttribute="trailing" secondItem="pnp-2f-N8y" secondAttribute="trailing" id="74y-8S-ffk"/>
-                            <constraint firstItem="xqL-b3-UUY" firstAttribute="leading" secondItem="ry2-Vu-S4t" secondAttribute="trailing" constant="-105" id="BOA-a8-RA5"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pnp-2f-N8y" secondAttribute="bottom" id="EOQ-Iu-62i"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="usX-vz-DiQ" secondAttribute="bottom" constant="15" id="KxG-qZ-P2V"/>
                             <constraint firstAttribute="trailing" secondItem="usX-vz-DiQ" secondAttribute="trailing" constant="15" id="LtH-3X-Uka"/>
                             <constraint firstItem="xqL-b3-UUY" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="R2c-5K-8e6"/>
                             <constraint firstItem="xqL-b3-UUY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WkD-dE-fCy"/>
                             <constraint firstItem="pnp-2f-N8y" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="gyi-zU-eLN"/>
-                            <constraint firstItem="xqL-b3-UUY" firstAttribute="top" secondItem="ry2-Vu-S4t" secondAttribute="bottom" constant="-50" id="mdt-W4-nG1"/>
                             <constraint firstAttribute="trailing" secondItem="xqL-b3-UUY" secondAttribute="trailing" id="yGs-Kj-7Yf"/>
                         </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="counterPartView" destination="xqL-b3-UUY" id="yXD-0a-fzp"/>
                         <outlet property="myCameraView" destination="usX-vz-DiQ" id="4sO-78-LtI"/>
@@ -115,6 +166,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="165" y="15"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4IQ-lt-YaI"/>
+    </inferredMetricsTieBreakers>
 </document>

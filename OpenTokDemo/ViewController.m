@@ -8,12 +8,14 @@
 @property (weak, nonatomic) IBOutlet UIView *myCameraView;
 @property (weak, nonatomic) IBOutlet UIView *counterPartView;
 
+@property (nonatomic,strong) NSMutableArray * subscribers;
+
 @end
 
 @implementation ViewController {
     OTSession* _session;
     OTPublisher* _publisher;
-    OTSubscriber* _subscriber;
+//    OTSubscriber* _subscriber;
 }
 
 - (IBAction)onBtnMutePressed:(id)sender {
@@ -55,7 +57,9 @@ static NSString* const kApiKey = @"45191042";
 // Replace with your generated session ID
 static NSString* const kSessionId = @"1_MX40NTE5MTA0Mn5-MTQyNzMxNTQ1MTUyN345WnlzTVdYaEJJSkpkRkw3WGVrM0lGMTV-fg";
 // Replace with your generated token
-static NSString* const kToken = @"T1==cGFydG5lcl9pZD00NTE5MTA0MiZzaWc9YWU0ZmRlYWQ1NDg0YjJmZTM1ZDA3NjczZTk3MzJmOGEwYTM0NGUxMjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5URTVNVEEwTW41LU1UUXlOek14TlRRMU1UVXlOMzQ1V25selRWZFlhRUpKU2twa1JrdzNXR1ZyTTBsR01UVi1mZyZjcmVhdGVfdGltZT0xNDI3MzE1NjcyJm5vbmNlPTAuNTU2NDAyOTQwOTQyMzQ2MyZleHBpcmVfdGltZT0xNDI3OTE3Mzg1";
+
+
+
 
 // Change to NO to subscribe to streams other than your own.
 static bool subscribeToSelf = NO;
@@ -68,6 +72,9 @@ static bool subscribeToSelf = NO;
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.
+    
+    
+    
     _session = [[OTSession alloc] initWithApiKey:kApiKey
                                        sessionId:kSessionId
                                         delegate:self];
@@ -101,7 +108,7 @@ static bool subscribeToSelf = NO;
 {
     OTError *error = nil;
     
-    [_session connectWithToken:kToken error:&error];
+    [_session connectWithToken:self.userToken error:&error];
     if (error)
     {
         [self showAlert:[error localizedDescription]];
@@ -129,6 +136,7 @@ static bool subscribeToSelf = NO;
     [self.view addSubview:_publisher.view];
     [self.myCameraView addSubview:_publisher.view];
     
+    
     [_publisher.view setFrame:CGRectMake(0, 0, self.myCameraView.frame.size.width, self.myCameraView.frame.size.height)];
 }
 
@@ -150,7 +158,15 @@ static bool subscribeToSelf = NO;
  */
 - (void)doSubscribe:(OTStream*)stream
 {
+    if (!self.subscribers){
+        self.subscribers = [NSMutableArray arrayWithCapacity:3];
+        
+    }
+    OTSubscriber * _subscriber;
+    
     _subscriber = [[OTSubscriber alloc] initWithStream:stream delegate:self];
+    
+    [self.subscribers addObject:_subscriber];
     
     OTError *error = nil;
     [_session subscribe:_subscriber error:&error];
@@ -160,16 +176,35 @@ static bool subscribeToSelf = NO;
     }
 }
 
+-(void) layoutSubscribers{
+    
+    
+    CGFloat subscriberHeight = self.counterPartView.frame.size.height / self.subscribers.count;
+    for (int i = 0 ; i<self.subscribers.count ; i++){
+        OTSubscriber * otSubscriber = self.subscribers[i];
+        [otSubscriber.view setFrame:CGRectMake(0, subscriberHeight*i, self.counterPartView.frame.size.width, subscriberHeight)];
+        
+        
+        [self.counterPartView addSubview:otSubscriber.view];
+        
+        
+        
+    }
+
+}
 /**
  * Cleans the subscriber from the view hierarchy, if any.
  * NB: You do *not* have to call unsubscribe in your controller in response to
  * a streamDestroyed event. Any subscribers (or the publisher) for a stream will
  * be automatically removed from the session during cleanup of the stream.
  */
-- (void)cleanupSubscriber
+- (void)cleanupSubscriber:(OTSubscriber*) subscriber
 {
-    [_subscriber.view removeFromSuperview];
-    _subscriber = nil;
+  //  [_subscriber.view removeFromSuperview];
+  //  _subscriber = nil;
+    [subscriber.view removeFromSuperview];
+    [self.subscribers removeObject:subscriber];
+    [self layoutSubscribers];
 }
 
 # pragma mark - OTSession delegate callbacks
@@ -199,20 +234,34 @@ static bool subscribeToSelf = NO;
     
     // Step 3a: (if NO == subscribeToSelf): Begin subscribing to a stream we
     // have seen on the OpenTok session.
-    if (nil == _subscriber && !subscribeToSelf)
-    {
+    
+    
+    //if (nil == _subscriber && !subscribeToSelf)
+   // {
         [self doSubscribe:stream];
-    }
+   // }
+    
 }
 
 - (void)session:(OTSession*)session
 streamDestroyed:(OTStream *)stream
 {
+    
     NSLog(@"session streamDestroyed (%@)", stream.streamId);
     
-    if ([_subscriber.stream.streamId isEqualToString:stream.streamId])
-    {
-        [self cleanupSubscriber];
+    OTSubscriber *subscriberToRemove = nil;
+    for (OTSubscriber * subscriber in self.subscribers){
+
+    
+        if ([subscriber.stream.streamId isEqualToString:stream.streamId])
+        {
+            subscriberToRemove = subscriber;
+            break;
+
+        }
+}
+    if (subscriberToRemove){
+                [self cleanupSubscriber:subscriberToRemove];
     }
 }
 
@@ -226,11 +275,28 @@ connectionCreated:(OTConnection *)connection
 connectionDestroyed:(OTConnection *)connection
 {
     NSLog(@"session connectionDestroyed (%@)", connection.connectionId);
-    if ([_subscriber.stream.connection.connectionId
-         isEqualToString:connection.connectionId])
-    {
-        [self cleanupSubscriber];
+    
+    OTSubscriber *subscriberToRemove = nil;
+    for (OTSubscriber * subscriber in self.subscribers){
+        
+        
+        if ([subscriber.stream.connection.connectionId isEqualToString:connection.connectionId])
+        {
+            subscriberToRemove = subscriber;
+            break;
+            
+        }
     }
+    if (subscriberToRemove){
+        [self cleanupSubscriber:subscriberToRemove];
+    }
+
+    
+//    if ([_subscriber.stream.connection.connectionId
+//         isEqualToString:connection.connectionId])
+//    {
+//        [self cleanupSubscriber];
+//    }
 }
 
 - (void) session:(OTSession*)session
@@ -245,11 +311,13 @@ didFailWithError:(OTError*)error
 {
     NSLog(@"subscriberDidConnectToStream (%@)",
           subscriber.stream.connection.connectionId);
-    assert(_subscriber == subscriber);
-    [_subscriber.view setFrame:CGRectMake(0, 0  , self.counterPartView.frame.size.width,
-                                          self.counterPartView.frame.size.height)];
+    //assert(_subscriber == subscriber);
+  
+    [self layoutSubscribers];
+    //    [_subscriber.view setFrame:CGRectMake(0, 0  , self.counterPartView.frame.size.width,
+    //                                      self.counterPartView.frame.size.height)];
     
-    [self.counterPartView addSubview:_subscriber.view];
+  //  [self.counterPartView addSubview:_subscriber.view];
     //    [self.view addSubview:_subscriber.view];
 }
 
@@ -270,21 +338,43 @@ didFailWithError:(OTError*)error
     // all participants in the OpenTok session. We will attempt to subscribe to
     // our own stream. Expect to see a slight delay in the subscriber video and
     // an echo of the audio coming from the device microphone.
+    
+    /*
     if (nil == _subscriber && subscribeToSelf)
     {
         [self doSubscribe:stream];
     }
+     */
 }
 
 - (void)publisher:(OTPublisherKit*)publisher
   streamDestroyed:(OTStream *)stream
 {
+    
+    OTSubscriber *subscriberToRemove = nil;
+    for (OTSubscriber * subscriber in self.subscribers){
+        
+        
+        if ([subscriber.stream.streamId isEqualToString:stream.streamId])
+        {
+            subscriberToRemove = subscriber;
+            break;
+            
+        }
+    }
+    if (subscriberToRemove){
+        [self cleanupSubscriber:subscriberToRemove];
+    }
+    [self cleanupPublisher];
+
+    /*
     if ([_subscriber.stream.streamId isEqualToString:stream.streamId])
     {
         [self cleanupSubscriber];
     }
     
     [self cleanupPublisher];
+     */
 }
 
 - (void)publisher:(OTPublisherKit*)publisher
